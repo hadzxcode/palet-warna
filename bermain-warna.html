@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bermain Warna</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+        body{
+            background-color: rgb(128,128,128);
+        }
+        h1{
+            text-align: center;
+            margin: 50px 0;
+        }
+        .biru{
+            background-color: #2b7fff;
+        }
+        button{
+            margin: 20px auto;
+            margin-bottom: 40px;
+        }
+        input{
+            margin-bottom: 40px;
+        }
+        .kotak{
+            width: 25px;
+            height: 25px;
+            margin: 20px auto ;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+        .blue{
+            background-color: blue;
+        }
+        #kodeWarna{
+            width: 200px;
+            height: 50px;
+            margin: 0 auto;
+            border: 2px solid black;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Palet Warna</h1>
+    <button type="button">ubah warna</button>
+
+    <div class="kotak red"></div>
+    <input type="range" name="sliderRed" min="0" max="255">
+
+    <div class="kotak green"></div>
+    <input type="range" name="sliderGreen" min="0" max="255">
+
+    <div class="kotak blue"></div>
+    <input type="range" name="sliderBlue" min="0" max="255">
+
+    <p id="kodeWarna">rgb(128, 128, 128)</p>
+
+    <script>
+        var button = document.querySelector("button")
+        var kodeWarna = document.getElementById("kodeWarna")
+        var h1 = document.getElementsByTagName("h1")[0]
+
+        button.addEventListener("click", function(){
+            document.body.classList.toggle("biru")
+        })
+
+        var sliderRed = document.querySelector("input[name=sliderRed]");
+        var sliderGreen = document.querySelector("input[name=sliderGreen]");
+        var sliderBlue = document.querySelector("input[name=sliderBlue]");
+        
+        sliderRed.addEventListener("input", function(){
+            var r = sliderRed.value;
+            var g = sliderGreen.value;
+            var b = sliderBlue.value
+
+            if(r < 120 || g < 120 || b < 120){
+                h1.style.color = "white"
+            }else{
+                h1.style.color = "black"
+            }
+            
+            document.body.style.backgroundColor = "rgb(" + r + ", " + g + ","+ b + ")"
+            kodeWarna.textContent = "rgb(" + r + ", " + g + ","+ b + ")"
+        })
+
+        sliderGreen.addEventListener("input", function(){
+            var r = sliderRed.value;
+            var g = sliderGreen.value;
+            var b = sliderBlue.value
+
+              if(r < 120 || g < 120 || b < 120){
+                h1.style.color = "white"
+            }else{
+                h1.style.color = "black"
+            }
+
+            document.body.style.backgroundColor = "rgb(" + r + ", " + g + ","+ b + ")"
+            kodeWarna.textContent = "rgb(" + r + ", " + g + ","+ b + ")"
+        })
+
+         sliderBlue.addEventListener("input", function(){
+            var r = sliderRed.value;
+            var g = sliderGreen.value;
+            var b = sliderBlue.value
+
+              if(r < 120 || g < 120 || b < 120){
+                h1.style.color = "white"
+            }else{
+                h1.style.color = "black"
+            }
+            document.body.style.backgroundColor = "rgb(" + r + ", " + g + ","+ b + ")"
+            kodeWarna.textContent = "rgb(" + r + ", " + g + ","+ b + ")"
+        })
+
+
+        if(r == 10 ) console.log("ini sepuluh");
+
+        
+    </script>
+</body>
+</html>
