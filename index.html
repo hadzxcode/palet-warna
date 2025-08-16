@@ -11,9 +11,6 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-align: center;
         }
-        body{
-            background-color: rgb(255,255,255);
-        }
         h1{
             text-align: center;
             margin: 50px 0;
@@ -59,6 +56,7 @@
 
     <h1>Palet Warna</h1>
     <button type="button">ubah warna</button>
+    <button type="button" id="reset">reset warna</button>
 
     <div class="kotak red"></div>
     <input type="range" name="sliderRed" min="0" max="255">
@@ -73,16 +71,30 @@
 
     <script>
         var button = document.querySelector("button")
+        var resetWarna = document.getElementById("reset")
         var kodeWarna = document.getElementById("kodeWarna")
         var h1 = document.getElementsByTagName("h1")[0]
 
         button.addEventListener("click", function(){
             document.body.classList.toggle("biru")
+            document.body.style.backgroundColor = ""
         })
 
         var sliderRed = document.querySelector("input[name=sliderRed]");
         var sliderGreen = document.querySelector("input[name=sliderGreen]");
         var sliderBlue = document.querySelector("input[name=sliderBlue]");
+
+        resetWarna.addEventListener("click", function(){
+            sliderRed.value = 128;
+            sliderGreen.value = 128;
+            sliderBlue.value = 128;
+
+            document.body.style.backgroundColor = ""
+            kodeWarna.innerHTML = "kode warna"
+            h1.style.color = "black"
+        })
+
+
         
         sliderRed.addEventListener("input", function(){
             var r = sliderRed.value;
@@ -127,12 +139,7 @@
             document.body.style.backgroundColor = "rgb(" + r + ", " + g + ","+ b + ")"
             kodeWarna.textContent = "rgb(" + r + ", " + g + ","+ b + ")"
         })
-
-
-        if(r == 10 ) console.log("ini sepuluh");
-
         
     </script>
 </body>
 </html>
-
